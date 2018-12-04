@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <title>Pet Index</title>
+</head>
+<body>
+    <div class="jumbotron">
+        <h1>
+            Welcome to the Pet Index
+        </h1>
+    </div>
+    <div class="main">
+        <table class="table table-dark table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Pet Name</th>
+                    <th>Species</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for pet in pets: %}
+                <tr>
+                    <td>{{ pet['id'] }}</td>
+                    <td>{{ pet['name'] }}</td>
+                    <td>{{ pet['type'] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div class="main2">
+        <form action="/add_pet" method="POST">
+            <div class="form-group abc">
+                <p>What's your pet's name?<input class="form-control" type="text" name="pet_name"></p>
+                <p>What kind of pet is it?   <input class="form-control" type="text" name="species"></p>
+                <input class="btn btn-dark" type="submit" value="Submit">
+            </div>
+        </form>
+    </div>
+</body>
+</html>
